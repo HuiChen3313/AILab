@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Publications</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications | AI Lab</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -9,27 +11,104 @@
 
 <header>
   <div class="container nav">
-    <strong>AI Lab</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="people.html">People</a>
-      <a href="publications.html">Publications</a>
-      <a href="news.html">News</a>
-      <a href="openings.html">Openings</a>
-      <a href="contact.html">Contact</a>
+    <strong data-en="AI Lab" data-zh="人工智能实验室">AI Lab</strong>
+    <div class="nav-right">
+      <a href="index.html" data-en="Home" data-zh="首页">Home</a>
+      <a href="research.html" data-en="Research" data-zh="研究方向">Research</a>
+      <a href="people.html" data-en="People" data-zh="团队成员">People</a>
+      <a href="publications.html" data-en="Publications" data-zh="论文发表">Publications</a>
+      <a href="news.html" data-en="News" data-zh="新闻动态">News</a>
+      <a href="openings.html" data-en="Openings" data-zh="招生招聘">Openings</a>
+      <a href="contact.html" data-en="Contact" data-zh="联系我们">Contact</a>
+      <button id="lang-toggle" type="button">中文</button>
     </div>
   </div>
 </header>
 
-<div class="container section">
-  <h1>Publications</h1>
+<section class="hero">
+  <div class="container">
+    <h1 data-en="Publications" data-zh="论文发表">Publications</h1>
 
-  <div class="card">
-    <p>Paper Title, Journal, 2025</p>
+    <p
+      data-en="Our research outputs span multimodal learning, federated learning, Bayesian machine learning, and trustworthy AI."
+      data-zh="我们的研究成果涵盖多模态学习、联邦学习、贝叶斯机器学习以及可信人工智能。">
+      Our research outputs span multimodal learning, federated learning, Bayesian machine learning, and trustworthy AI.
+    </p>
   </div>
+</section>
 
-</div>
+<section class="section">
+  <div class="container">
+
+    <h2 data-en="Selected Publications" data-zh="代表性论文">Selected Publications</h2>
+
+    <div class="publication-item">
+      <div class="pub-year">2026</div>
+      <div class="pub-content">
+        <h3>Federated Neural Nonparametric Point Processes</h3>
+        <p class="pub-authors">Hui Chen, Xuhui Fan, Hengyu Liu, Yaqiong Li, Zhilin Zhao, Feng Zhou, Christopher John Quinn, Longbing Cao</p>
+        <p class="pub-venue">Artificial Intelligence, 2026</p>
+        <p class="pub-desc"
+           data-en="A federated framework for neural nonparametric point process modeling under decentralized environments."
+           data-zh="提出一种面向去中心化环境的联邦神经非参数点过程建模框架。">
+           A federated framework for neural nonparametric point process modeling under decentralized environments.
+        </p>
+      </div>
+    </div>
+
+    <div class="publication-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <h3>FedSI: Federated Subnetwork Inference for Efficient Uncertainty Quantification</h3>
+        <p class="pub-authors">Hui Chen, Hengyu Liu, Zhangkai Wu, Xuhui Fan, Longbing Cao</p>
+        <p class="pub-venue">IEEE Transactions on Neural Networks and Learning Systems, 2025</p>
+        <p class="pub-desc"
+           data-en="An efficient Bayesian personalized federated learning framework with subnetwork inference for scalable uncertainty quantification."
+           data-zh="提出一种基于子网络推断的高效贝叶斯个性化联邦学习框架，实现可扩展的不确定性量化。">
+           An efficient Bayesian personalized federated learning framework with subnetwork inference for scalable uncertainty quantification.
+        </p>
+      </div>
+    </div>
+
+    <div class="publication-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <h3>A Generative Random Modality Dropout Framework for Robust Multimodal Emotion Recognition</h3>
+        <p class="pub-authors">Author A, Author B, Hui Chen</p>
+        <p class="pub-venue">IEEE Intelligent Systems, 2025</p>
+        <p class="pub-desc"
+           data-en="A robust multimodal learning framework for emotion recognition under missing and unreliable modalities."
+           data-zh="提出一种面向模态缺失与不可靠场景的鲁棒多模态情感识别框架。">
+           A robust multimodal learning framework for emotion recognition under missing and unreliable modalities.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const toggleBtn = document.getElementById("lang-toggle");
+  let currentLang = localStorage.getItem("lang") || "en";
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
+    document.querySelectorAll("[data-en][data-zh]").forEach(el => {
+      el.textContent = el.getAttribute("data-" + lang);
+    });
+
+    toggleBtn.textContent = lang === "en" ? "中文" : "English";
+    localStorage.setItem("lang", lang);
+    currentLang = lang;
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    setLanguage(currentLang === "en" ? "zh" : "en");
+  });
+
+  setLanguage(currentLang);
+</script>
 
 </body>
 </html>
