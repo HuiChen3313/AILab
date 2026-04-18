@@ -125,3 +125,89 @@ header {
     font-size: 2rem;
   }
 }
+
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.person-card {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-weight: bold;
+}
+
+.role {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+
+.publication-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.pub-year {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.pub-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.12rem;
+  line-height: 1.5;
+}
+
+.pub-authors {
+  margin: 0 0 6px 0;
+  color: var(--text);
+  font-size: 0.97rem;
+}
+
+.pub-venue {
+  margin: 0 0 8px 0;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.96rem;
+}
+
+.pub-desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .publication-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .pub-year {
+    margin-bottom: 4px;
+  }
+}
