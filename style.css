@@ -135,24 +135,17 @@ header {
 }
 
 .person-card {
-  background: white;
-  border: 1px solid var(--line);
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
+    padding: 20px 15px; 
+    text-align: center;
 }
 
 .avatar {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: #2563eb;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 12px;
-  font-weight: bold;
+    width: 220px;      /* 直接放大 */
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px;
 }
 
 .role {
@@ -210,12 +203,4 @@ header {
   .pub-year {
     margin-bottom: 4px;
   }
-}
-.avatar {
-    width: 180px;    
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto 15px;
 }
