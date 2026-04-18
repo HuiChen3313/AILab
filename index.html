@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Lab</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -9,25 +11,125 @@
 
 <header>
   <div class="container nav">
-    <strong>AI Lab</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="people.html">People</a>
-      <a href="publications.html">Publications</a>
-      <a href="news.html">News</a>
-      <a href="openings.html">Openings</a>
-      <a href="contact.html">Contact</a>
+    <strong data-en="AI Lab" data-zh="人工智能实验室">AI Lab</strong>
+    <div class="nav-right">
+      <a href="index.html" data-en="Home" data-zh="首页">Home</a>
+      <a href="research.html" data-en="Research" data-zh="研究方向">Research</a>
+      <a href="people.html" data-en="People" data-zh="团队成员">People</a>
+      <a href="publications.html" data-en="Publications" data-zh="论文发表">Publications</a>
+      <a href="news.html" data-en="News" data-zh="新闻动态">News</a>
+      <a href="openings.html" data-en="Openings" data-zh="招生招聘">Openings</a>
+      <a href="contact.html" data-en="Contact" data-zh="联系我们">Contact</a>
+      <button id="lang-toggle" type="button">中文</button>
     </div>
   </div>
 </header>
 
-<div class="container section">
-  <h1>Advancing Multimodal and Federated AI</h1>
-  <p>
-    We work on multimodal learning, federated learning, and uncertainty-aware AI systems.
-  </p>
-</div>
+<section class="hero">
+  <div class="container">
+    <h1
+      data-en="Advancing Multimodal and Federated AI"
+      data-zh="推进多模态与联邦智能前沿研究">
+      Advancing Multimodal and Federated AI
+    </h1>
+
+    <p
+      data-en="We work on multimodal learning, federated learning, Bayesian machine learning, and uncertainty-aware AI systems for real-world intelligence."
+      data-zh="我们致力于多模态学习、联邦学习、贝叶斯机器学习以及面向真实世界智能应用的不确定性感知人工智能系统研究。">
+      We work on multimodal learning, federated learning, Bayesian machine learning, and uncertainty-aware AI systems for real-world intelligence.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2
+      data-en="About"
+      data-zh="实验室简介">
+      About
+    </h2>
+
+    <div class="card">
+      <p
+        data-en="Our lab focuses on trustworthy artificial intelligence, with particular interests in multimodal understanding, distributed learning, and robust decision-making under uncertainty."
+        data-zh="本实验室聚焦可信人工智能，重点研究多模态理解、分布式学习以及不确定性条件下的鲁棒决策。">
+        Our lab focuses on trustworthy artificial intelligence, with particular interests in multimodal understanding, distributed learning, and robust decision-making under uncertainty.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2
+      data-en="Highlights"
+      data-zh="研究亮点">
+      Highlights
+    </h2>
+
+    <div class="card">
+      <h3
+        data-en="Multimodal Learning"
+        data-zh="多模态学习">
+        Multimodal Learning
+      </h3>
+      <p
+        data-en="Learning from text, audio, vision, and other heterogeneous sources."
+        data-zh="研究如何从文本、语音、视觉等异构模态中进行联合学习。">
+        Learning from text, audio, vision, and other heterogeneous sources.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3
+        data-en="Federated Learning"
+        data-zh="联邦学习">
+        Federated Learning
+      </h3>
+      <p
+        data-en="Building privacy-aware and distributed machine learning systems."
+        data-zh="构建面向隐私保护与分布式场景的机器学习系统。">
+        Building privacy-aware and distributed machine learning systems.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3
+        data-en="Bayesian AI"
+        data-zh="贝叶斯人工智能">
+        Bayesian AI
+      </h3>
+      <p
+        data-en="Developing reliable AI models with principled uncertainty quantification."
+        data-zh="通过原则性不确定性量化构建更可靠的人工智能模型。">
+        Developing reliable AI models with principled uncertainty quantification.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const toggleBtn = document.getElementById("lang-toggle");
+  let currentLang = localStorage.getItem("lang") || "en";
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
+    document.querySelectorAll("[data-en][data-zh]").forEach(el => {
+      el.textContent = el.getAttribute("data-" + lang);
+    });
+
+    toggleBtn.textContent = lang === "en" ? "中文" : "English";
+    localStorage.setItem("lang", lang);
+    currentLang = lang;
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    setLanguage(currentLang === "en" ? "zh" : "en");
+  });
+
+  setLanguage(currentLang);
+</script>
 
 </body>
 </html>
