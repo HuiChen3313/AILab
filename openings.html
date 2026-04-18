@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,47 +11,114 @@
 
 <header>
   <div class="container nav">
-    <strong>AI Lab</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="people.html">People</a>
-      <a href="publications.html">Publications</a>
-      <a href="news.html">News</a>
-      <a href="openings.html">Openings</a>
-      <a href="contact.html">Contact</a>
+    <strong data-en="AI Lab" data-zh="人工智能实验室">AI Lab</strong>
+    <div class="nav-right">
+      <a href="index.html" data-en="Home" data-zh="首页">Home</a>
+      <a href="research.html" data-en="Research" data-zh="研究方向">Research</a>
+      <a href="people.html" data-en="People" data-zh="团队成员">People</a>
+      <a href="publications.html" data-en="Publications" data-zh="论文发表">Publications</a>
+      <a href="news.html" data-en="News" data-zh="新闻动态">News</a>
+      <a href="openings.html" data-en="Openings" data-zh="招生招聘">Openings</a>
+      <a href="contact.html" data-en="Contact" data-zh="联系我们">Contact</a>
+      <button id="lang-toggle" type="button">中文</button>
     </div>
   </div>
 </header>
 
-<div class="container section">
-  <h1>Openings</h1>
+<section class="hero">
+  <div class="container">
+    <h1 data-en="Openings" data-zh="招生与招聘">Openings</h1>
 
-  <div class="card">
-    <h3>PhD Students</h3>
-    <p>
-      We welcome applications from motivated students with backgrounds in
-      machine learning, artificial intelligence, statistics, computer vision,
-      multimodal learning, or federated learning.
+    <p
+      data-en="We are actively looking for talented students and collaborators to join our research in AI."
+      data-zh="我们正在积极招募优秀的学生和合作伙伴，共同开展人工智能相关研究。">
+      We are actively looking for talented students and collaborators to join our research in AI.
     </p>
   </div>
+</section>
 
-  <div class="card">
-    <h3>Research Assistants / Visiting Students</h3>
-    <p>
-      We are also open to collaborations with visiting students and research
-      assistants interested in reliable and uncertainty-aware AI systems.
-    </p>
-  </div>
+<section class="section">
+  <div class="container">
 
-  <div class="card">
-    <h3>How to Apply</h3>
-    <p>
-      Please send your CV, transcript, and a short statement of research
-      interests to: your-email@university.edu
-    </p>
+    <!-- PhD -->
+    <div class="card">
+      <h3 data-en="PhD Students" data-zh="博士生">PhD Students</h3>
+
+      <p
+        data-en="We welcome highly motivated students with strong backgrounds in machine learning, artificial intelligence, statistics, or related areas."
+        data-zh="欢迎具有机器学习、人工智能、统计学或相关背景的优秀学生申请博士。">
+        We welcome highly motivated students with strong backgrounds in machine learning, artificial intelligence, statistics, or related areas.
+      </p>
+
+      <p
+        data-en="Research topics include multimodal learning, federated learning, Bayesian AI, and trustworthy machine learning."
+        data-zh="研究方向包括多模态学习、联邦学习、贝叶斯人工智能以及可信机器学习。">
+        Research topics include multimodal learning, federated learning, Bayesian AI, and trustworthy machine learning.
+      </p>
+    </div>
+
+    <!-- RA / Visiting -->
+    <div class="card">
+      <h3 data-en="Research Assistants / Visiting Students" data-zh="科研助理 / 访问学生">
+        Research Assistants / Visiting Students
+      </h3>
+
+      <p
+        data-en="We offer opportunities for undergraduate, master, and visiting students to participate in ongoing research projects."
+        data-zh="我们为本科生、硕士生及访问学生提供参与科研项目的机会。">
+        We offer opportunities for undergraduate, master, and visiting students to participate in ongoing research projects.
+      </p>
+    </div>
+
+    <!-- Collaboration -->
+    <div class="card">
+      <h3 data-en="Collaboration" data-zh="合作交流">Collaboration</h3>
+
+      <p
+        data-en="We are open to academic and industry collaborations in AI, especially in multimodal learning, federated learning, and uncertainty-aware systems."
+        data-zh="欢迎在人工智能领域开展学术或产业合作，尤其是多模态学习、联邦学习和不确定性感知系统方向。">
+        We are open to academic and industry collaborations in AI, especially in multimodal learning, federated learning, and uncertainty-aware systems.
+      </p>
+    </div>
+
+    <!-- Apply -->
+    <div class="card">
+      <h3 data-en="How to Apply" data-zh="申请方式">How to Apply</h3>
+
+      <p
+        data-en="Please send your CV, transcripts, and a short statement of research interests to the email below."
+        data-zh="请将个人简历、成绩单以及简短的研究兴趣说明发送至以下邮箱。">
+        Please send your CV, transcripts, and a short statement of research interests to the email below.
+      </p>
+
+      <p><strong>Email: your-email@university.edu</strong></p>
+    </div>
+
   </div>
-</div>
+</section>
+
+<script>
+  const toggleBtn = document.getElementById("lang-toggle");
+  let currentLang = localStorage.getItem("lang") || "en";
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
+    document.querySelectorAll("[data-en][data-zh]").forEach(el => {
+      el.textContent = el.getAttribute("data-" + lang);
+    });
+
+    toggleBtn.textContent = lang === "en" ? "中文" : "English";
+    localStorage.setItem("lang", lang);
+    currentLang = lang;
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    setLanguage(currentLang === "en" ? "zh" : "en");
+  });
+
+  setLanguage(currentLang);
+</script>
 
 </body>
 </html>
