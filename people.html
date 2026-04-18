@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>People</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>People | AI Lab</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -9,28 +11,109 @@
 
 <header>
   <div class="container nav">
-    <strong>AI Lab</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="people.html">People</a>
-      <a href="publications.html">Publications</a>
-      <a href="news.html">News</a>
-      <a href="openings.html">Openings</a>
-      <a href="contact.html">Contact</a>
+    <strong data-en="AI Lab" data-zh="人工智能实验室">AI Lab</strong>
+    <div class="nav-right">
+      <a href="index.html" data-en="Home" data-zh="首页">Home</a>
+      <a href="research.html" data-en="Research" data-zh="研究方向">Research</a>
+      <a href="people.html" data-en="People" data-zh="团队成员">People</a>
+      <a href="publications.html" data-en="Publications" data-zh="论文发表">Publications</a>
+      <a href="news.html" data-en="News" data-zh="新闻动态">News</a>
+      <a href="openings.html" data-en="Openings" data-zh="招生招聘">Openings</a>
+      <a href="contact.html" data-en="Contact" data-zh="联系我们">Contact</a>
+      <button id="lang-toggle" type="button">中文</button>
     </div>
   </div>
 </header>
 
-<div class="container section">
-  <h1>People</h1>
+<section class="hero">
+  <div class="container">
+    <h1 data-en="People" data-zh="团队成员">People</h1>
 
-  <div class="card">
-    <h3>Professor Name</h3>
-    <p>Principal Investigator</p>
+    <p
+      data-en="Meet our team members working on AI, multimodal learning, and federated systems."
+      data-zh="认识我们致力于人工智能、多模态学习与联邦学习研究的团队成员。">
+      Meet our team members working on AI, multimodal learning, and federated systems.
+    </p>
   </div>
+</section>
 
-</div>
+<section class="section">
+  <div class="container">
+
+    <!-- PI -->
+    <h2 data-en="Principal Investigator" data-zh="负责人">Principal Investigator</h2>
+
+    <div class="people-grid">
+
+      <div class="person-card">
+        <div class="avatar">HC</div>
+        <h3>Hui Chen</h3>
+        <p class="role"
+           data-en="Research Associate"
+           data-zh="研究人员">
+           Research Associate
+        </p>
+        <p
+          data-en="Multimodal learning, federated learning, Bayesian AI."
+          data-zh="多模态学习、联邦学习、贝叶斯人工智能。">
+          Multimodal learning, federated learning, Bayesian AI.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Students -->
+    <h2 data-en="Students" data-zh="学生">Students</h2>
+
+    <div class="people-grid">
+
+      <div class="person-card">
+        <div class="avatar">S</div>
+        <h3>Student Name</h3>
+        <p class="role"
+           data-en="PhD Student"
+           data-zh="博士生">
+           PhD Student
+        </p>
+      </div>
+
+      <div class="person-card">
+        <div class="avatar">S</div>
+        <h3>Student Name</h3>
+        <p class="role"
+           data-en="Master Student"
+           data-zh="硕士生">
+           Master Student
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const toggleBtn = document.getElementById("lang-toggle");
+  let currentLang = localStorage.getItem("lang") || "en";
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
+    document.querySelectorAll("[data-en][data-zh]").forEach(el => {
+      el.textContent = el.getAttribute("data-" + lang);
+    });
+
+    toggleBtn.textContent = lang === "en" ? "中文" : "English";
+    localStorage.setItem("lang", lang);
+    currentLang = lang;
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    setLanguage(currentLang === "en" ? "zh" : "en");
+  });
+
+  setLanguage(currentLang);
+</script>
 
 </body>
 </html>
