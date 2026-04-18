@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Research</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research | AI Lab</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -9,33 +11,114 @@
 
 <header>
   <div class="container nav">
-    <strong>AI Lab</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="people.html">People</a>
-      <a href="publications.html">Publications</a>
-      <a href="news.html">News</a>
-      <a href="openings.html">Openings</a>
-      <a href="contact.html">Contact</a>
+    <strong data-en="AI Lab" data-zh="人工智能实验室">AI Lab</strong>
+    <div class="nav-right">
+      <a href="index.html" data-en="Home" data-zh="首页">Home</a>
+      <a href="research.html" data-en="Research" data-zh="研究方向">Research</a>
+      <a href="people.html" data-en="People" data-zh="团队成员">People</a>
+      <a href="publications.html" data-en="Publications" data-zh="论文发表">Publications</a>
+      <a href="news.html" data-en="News" data-zh="新闻动态">News</a>
+      <a href="openings.html" data-en="Openings" data-zh="招生招聘">Openings</a>
+      <a href="contact.html" data-en="Contact" data-zh="联系我们">Contact</a>
+      <button id="lang-toggle" type="button">中文</button>
     </div>
   </div>
 </header>
 
-<div class="container section">
-  <h1>Research</h1>
+<section class="hero">
+  <div class="container">
+    <h1
+      data-en="Research"
+      data-zh="研究方向">
+      Research
+    </h1>
 
-  <div class="card">
-    <h3>Multimodal Learning</h3>
-    <p>Learning from text, audio, and visual data.</p>
+    <p
+      data-en="Our research spans multimodal intelligence, federated learning, Bayesian machine learning, and robust AI systems for dynamic real-world environments."
+      data-zh="我们的研究涵盖多模态智能、联邦学习、贝叶斯机器学习以及面向动态真实环境的鲁棒人工智能系统。">
+      Our research spans multimodal intelligence, federated learning, Bayesian machine learning, and robust AI systems for dynamic real-world environments.
+    </p>
   </div>
+</section>
 
-  <div class="card">
-    <h3>Federated Learning</h3>
-    <p>Distributed and privacy-preserving AI.</p>
+<section class="section">
+  <div class="container">
+    <div class="card">
+      <h3
+        data-en="Multimodal Learning"
+        data-zh="多模态学习">
+        Multimodal Learning
+      </h3>
+      <p
+        data-en="We study how to model and fuse text, audio, video, image, and other heterogeneous signals for reliable perception and understanding."
+        data-zh="我们研究如何对文本、语音、视频、图像等异构信号进行建模与融合，以实现可靠的感知与理解。">
+        We study how to model and fuse text, audio, video, image, and other heterogeneous signals for reliable perception and understanding.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3
+        data-en="Federated Learning"
+        data-zh="联邦学习">
+        Federated Learning
+      </h3>
+      <p
+        data-en="We develop privacy-aware distributed learning methods that can operate under Non-IID data, personalization requirements, and communication constraints."
+        data-zh="我们致力于研究面向隐私保护的分布式学习方法，使其能够在非独立同分布数据、个性化需求以及通信受限条件下有效运行。">
+        We develop privacy-aware distributed learning methods that can operate under Non-IID data, personalization requirements, and communication constraints.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3
+        data-en="Bayesian Machine Learning"
+        data-zh="贝叶斯机器学习">
+        Bayesian Machine Learning
+      </h3>
+      <p
+        data-en="We investigate Bayesian deep learning and probabilistic inference to improve reliability, calibration, and uncertainty quantification in modern AI systems."
+        data-zh="我们研究贝叶斯深度学习与概率推断，以提升现代人工智能系统的可靠性、校准能力和不确定性量化水平。">
+        We investigate Bayesian deep learning and probabilistic inference to improve reliability, calibration, and uncertainty quantification in modern AI systems.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3
+        data-en="Reliable and Uncertainty-Aware AI"
+        data-zh="可靠与不确定性感知人工智能">
+        Reliable and Uncertainty-Aware AI
+      </h3>
+      <p
+        data-en="We aim to build AI systems that remain robust under missing modalities, noisy environments, temporal shifts, and real-world deployment challenges."
+        data-zh="我们希望构建能够在模态缺失、噪声环境、时间漂移以及真实部署挑战下依然保持鲁棒性的人工智能系统。">
+        We aim to build AI systems that remain robust under missing modalities, noisy environments, temporal shifts, and real-world deployment challenges.
+      </p>
+    </div>
   </div>
+</section>
 
-</div>
+<script>
+  const toggleBtn = document.getElementById("lang-toggle");
+  let currentLang = localStorage.getItem("lang") || "en";
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
+    document.querySelectorAll("[data-en][data-zh]").forEach(el => {
+      el.textContent = el.getAttribute("data-" + lang);
+    });
+
+    toggleBtn.textContent = lang === "en" ? "中文" : "English";
+    localStorage.setItem("lang", lang);
+    currentLang = lang;
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    setLanguage(currentLang === "en" ? "zh" : "en");
+  });
+
+  setLanguage(currentLang);
+</script>
 
 </body>
 </html>
