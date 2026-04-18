@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,38 +11,88 @@
 
 <header>
   <div class="container nav">
-    <strong>AI Lab</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="people.html">People</a>
-      <a href="publications.html">Publications</a>
-      <a href="news.html">News</a>
-      <a href="openings.html">Openings</a>
-      <a href="contact.html">Contact</a>
+    <strong data-en="AI Lab" data-zh="人工智能实验室">AI Lab</strong>
+    <div class="nav-right">
+      <a href="index.html" data-en="Home" data-zh="首页">Home</a>
+      <a href="research.html" data-en="Research" data-zh="研究方向">Research</a>
+      <a href="people.html" data-en="People" data-zh="团队成员">People</a>
+      <a href="publications.html" data-en="Publications" data-zh="论文发表">Publications</a>
+      <a href="news.html" data-en="News" data-zh="新闻动态">News</a>
+      <a href="openings.html" data-en="Openings" data-zh="招生招聘">Openings</a>
+      <a href="contact.html" data-en="Contact" data-zh="联系我们">Contact</a>
+      <button id="lang-toggle" type="button">中文</button>
     </div>
   </div>
 </header>
 
-<div class="container section">
-  <h1>Contact</h1>
-
-  <div class="card">
-    <h3>AI Lab</h3>
-    <p>School / Department Name</p>
-    <p>University Name</p>
-    <p>Email: your-email@university.edu</p>
-    <p>Address: Building, Campus, City, Country</p>
-  </div>
-
-  <div class="card">
-    <h3>Collaboration</h3>
-    <p>
-      We welcome academic and industry collaborations in multimodal learning,
-      federated learning, Bayesian AI, and reliable machine learning.
+<section class="hero">
+  <div class="container">
+    <h1 data-en="Contact" data-zh="联系我们">Contact</h1>
+    <p
+      data-en="We welcome academic collaboration, student applications, and industry engagement."
+      data-zh="欢迎学术合作、学生申请以及产业合作交流。">
+      We welcome academic collaboration, student applications, and industry engagement.
     </p>
   </div>
-</div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="card">
+      <h3 data-en="Laboratory Information" data-zh="实验室信息">Laboratory Information</h3>
+      <p data-en="AI Lab" data-zh="人工智能实验室">AI Lab</p>
+      <p data-en="School / Department Name" data-zh="学院 / 系名称">School / Department Name</p>
+      <p data-en="University Name" data-zh="学校名称">University Name</p>
+      <p>Email: your-email@university.edu</p>
+      <p data-en="Address: Building, Campus, City, Country" data-zh="地址：楼宇，校区，城市，国家">
+        Address: Building, Campus, City, Country
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 data-en="Collaboration" data-zh="合作交流">Collaboration</h3>
+      <p
+        data-en="We are interested in collaboration on multimodal learning, federated learning, Bayesian machine learning, trustworthy AI, and related interdisciplinary applications."
+        data-zh="我们欢迎围绕多模态学习、联邦学习、贝叶斯机器学习、可信人工智能及相关交叉应用开展合作。">
+        We are interested in collaboration on multimodal learning, federated learning, Bayesian machine learning, trustworthy AI, and related interdisciplinary applications.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 data-en="Student Enquiries" data-zh="学生申请咨询">Student Enquiries</h3>
+      <p
+        data-en="Prospective students are encouraged to send their CV, transcripts, and a brief statement of research interests by email."
+        data-zh="欢迎有意向的学生通过邮件发送个人简历、成绩单以及简短的研究兴趣说明。">
+        Prospective students are encouraged to send their CV, transcripts, and a brief statement of research interests by email.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const toggleBtn = document.getElementById("lang-toggle");
+  let currentLang = localStorage.getItem("lang") || "en";
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
+    document.querySelectorAll("[data-en][data-zh]").forEach(el => {
+      el.textContent = el.getAttribute("data-" + lang);
+    });
+
+    toggleBtn.textContent = lang === "en" ? "中文" : "English";
+    localStorage.setItem("lang", lang);
+    currentLang = lang;
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    setLanguage(currentLang === "en" ? "zh" : "en");
+  });
+
+  setLanguage(currentLang);
+</script>
 
 </body>
 </html>
