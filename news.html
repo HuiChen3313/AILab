@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,37 +11,107 @@
 
 <header>
   <div class="container nav">
-    <strong>AI Lab</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="people.html">People</a>
-      <a href="publications.html">Publications</a>
-      <a href="news.html">News</a>
-      <a href="openings.html">Openings</a>
-      <a href="contact.html">Contact</a>
+    <strong data-en="AI Lab" data-zh="人工智能实验室">AI Lab</strong>
+    <div class="nav-right">
+      <a href="index.html" data-en="Home" data-zh="首页">Home</a>
+      <a href="research.html" data-en="Research" data-zh="研究方向">Research</a>
+      <a href="people.html" data-en="People" data-zh="团队成员">People</a>
+      <a href="publications.html" data-en="Publications" data-zh="论文发表">Publications</a>
+      <a href="news.html" data-en="News" data-zh="新闻动态">News</a>
+      <a href="openings.html" data-en="Openings" data-zh="招生招聘">Openings</a>
+      <a href="contact.html" data-en="Contact" data-zh="联系我们">Contact</a>
+      <button id="lang-toggle" type="button">中文</button>
     </div>
   </div>
 </header>
 
-<div class="container section">
-  <h1>News</h1>
-
-  <div class="card">
-    <h3>April 2026</h3>
-    <p>One paper was accepted to a leading AI conference.</p>
+<section class="hero">
+  <div class="container">
+    <h1 data-en="News" data-zh="新闻动态">News</h1>
+    <p
+      data-en="Latest updates on publications, talks, awards, recruitment, and academic activities."
+      data-zh="发布实验室在论文、报告、奖励、招生和学术活动等方面的最新动态。">
+      Latest updates on publications, talks, awards, recruitment, and academic activities.
+    </p>
   </div>
+</section>
 
-  <div class="card">
-    <h3>March 2026</h3>
-    <p>We are recruiting PhD students and research assistants.</p>
-  </div>
+<section class="section">
+  <div class="container">
 
-  <div class="card">
-    <h3>January 2026</h3>
-    <p>Our team gave an invited talk on trustworthy multimodal AI.</p>
+    <div class="publication-item">
+      <div class="pub-year">2026</div>
+      <div class="pub-content">
+        <h3
+          data-en="April · One paper accepted to a leading AI conference"
+          data-zh="4月 · 一篇论文被人工智能领域重要会议录用">
+          April · One paper accepted to a leading AI conference
+        </h3>
+        <p class="pub-desc"
+           data-en="We are pleased to share that our recent work has been accepted for presentation."
+           data-zh="我们近期的一项研究成果已被录用并将在相关会议上展示。">
+          We are pleased to share that our recent work has been accepted for presentation.
+        </p>
+      </div>
+    </div>
+
+    <div class="publication-item">
+      <div class="pub-year">2026</div>
+      <div class="pub-content">
+        <h3
+          data-en="March · Recruiting PhD students and research assistants"
+          data-zh="3月 · 招收博士生与科研助理">
+          March · Recruiting PhD students and research assistants
+        </h3>
+        <p class="pub-desc"
+           data-en="We welcome applications from students interested in multimodal learning, federated learning, and Bayesian AI."
+           data-zh="欢迎对多模态学习、联邦学习和贝叶斯人工智能感兴趣的同学申请加入。">
+          We welcome applications from students interested in multimodal learning, federated learning, and Bayesian AI.
+        </p>
+      </div>
+    </div>
+
+    <div class="publication-item">
+      <div class="pub-year">2026</div>
+      <div class="pub-content">
+        <h3
+          data-en="January · Invited talk on trustworthy multimodal AI"
+          data-zh="1月 · 围绕可信多模态人工智能作邀请报告">
+          January · Invited talk on trustworthy multimodal AI
+        </h3>
+        <p class="pub-desc"
+           data-en="Our team was invited to present recent progress on robust and uncertainty-aware AI systems."
+           data-zh="团队受邀介绍了在鲁棒与不确定性感知人工智能系统方面的最新进展。">
+          Our team was invited to present recent progress on robust and uncertainty-aware AI systems.
+        </p>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
+
+<script>
+  const toggleBtn = document.getElementById("lang-toggle");
+  let currentLang = localStorage.getItem("lang") || "en";
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
+    document.querySelectorAll("[data-en][data-zh]").forEach(el => {
+      el.textContent = el.getAttribute("data-" + lang);
+    });
+
+    toggleBtn.textContent = lang === "en" ? "中文" : "English";
+    localStorage.setItem("lang", lang);
+    currentLang = lang;
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    setLanguage(currentLang === "en" ? "zh" : "en");
+  });
+
+  setLanguage(currentLang);
+</script>
 
 </body>
 </html>
