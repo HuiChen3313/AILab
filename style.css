@@ -212,10 +212,10 @@ header {
   }
 }
 .avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;   /* 圆形头像 */
-    object-fit: cover;    /* 不变形 */
+    width: 180px;    
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
     display: block;
-    margin: 0 auto 10px;
+    margin: 0 auto 15px;
 }
