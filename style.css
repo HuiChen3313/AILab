@@ -221,6 +221,21 @@ header {
 
 
 /* =========================
+   Home Research Grid
+   ========================= */
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.research-grid .card {
+  margin-bottom: 0;
+}
+
+
+/* =========================
    Section Introduction
    ========================= */
 
@@ -233,14 +248,14 @@ header {
 
 
 /* =========================
-   Lab Highlights Slider
+   Lab Highlights
    ========================= */
 
 .photo-slider {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
+  max-width: 100%;
 }
 
 .slider-viewport {
@@ -250,55 +265,67 @@ header {
 
 .slider-track {
   display: flex;
-  gap: 20px;
-  transition: transform 0.6s ease;
+  gap: 18px;
 }
 
+
+/* 整个照片卡片大小 */
+
 .highlight-card {
-  flex: 0 0 calc((100% - 40px) / 3);
+  flex: 0 0 260px;
+  width: 260px;
+
   background: white;
+
   border: 1px solid var(--line);
+
   border-radius: 12px;
+
   overflow: hidden;
 }
 
+
+/* 图片大小 */
+
 .highlight-card img {
+
   display: block;
-  width: 100%;
-  height: 220px;
+
+  width: 260px;
+
+  height: 145px;
+
   object-fit: cover;
+
 }
+
+
+/* 图片下方文字 */
 
 .highlight-caption {
-  padding: 18px;
+  padding: 12px 14px;
 }
+
 
 .highlight-caption h3 {
-  margin: 0 0 8px;
-  font-size: 1.05rem;
+
+  margin: 0 0 5px;
+
+  font-size: 0.96rem;
+
 }
+
 
 .highlight-caption p {
+
   margin: 0;
+
   color: var(--muted);
-  font-size: 0.95rem;
-}
 
-.slider-btn {
-  flex-shrink: 0;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: white;
-  color: var(--text);
-  cursor: pointer;
-  font-size: 18px;
-}
+  font-size: 0.84rem;
 
-.slider-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  line-height: 1.45;
+
 }
 
 
@@ -307,35 +334,56 @@ header {
    ========================= */
 
 .section-title-row {
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 20px;
+
   margin-bottom: 8px;
+
 }
+
 
 .view-more {
+
   color: var(--accent);
+
   font-size: 0.95rem;
+
 }
+
 
 .view-more:hover {
+
   text-decoration: underline;
+
 }
+
 
 .inline-link {
+
   color: var(--accent);
+
   font-weight: 500;
-  margin-left: 4px;
+
+  margin-left: 6px;
+
 }
 
+
 .inline-link:hover {
+
   text-decoration: underline;
+
 }
 
 
 /* =========================
-   Responsive
+   Tablet
    ========================= */
 
 @media (max-width: 1000px) {
@@ -344,12 +392,12 @@ header {
     grid-template-columns: 1fr 1fr;
   }
 
-  .highlight-card {
-    flex: 0 0 calc((100% - 20px) / 2);
-  }
-
 }
 
+
+/* =========================
+   Mobile
+   ========================= */
 
 @media (max-width: 700px) {
 
@@ -357,22 +405,33 @@ header {
     grid-template-columns: 1fr;
   }
 
+
   .highlight-card {
-    flex: 0 0 100%;
+
+    flex: 0 0 220px;
+
+    width: 220px;
+
   }
 
-  .slider-btn {
-    display: none;
-  }
 
   .highlight-card img {
-    height: 210px;
+
+    width: 220px;
+
+    height: 125px;
+
   }
 
+
   .section-title-row {
+
     align-items: flex-start;
+
     flex-direction: column;
+
     gap: 4px;
+
   }
 
 }
