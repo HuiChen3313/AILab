@@ -348,97 +348,97 @@
   setLanguage(currentLang);
 
 
-  /* =========================
-     Lab Highlights Slider
-     ========================= */
+/* =========================
+   Lab Highlights Slider
+   ========================= */
 
-  const track = document.querySelector(".slider-track");
-  const cards = document.querySelectorAll(".highlight-card");
-  const prevBtn = document.querySelector(".prev-btn");
-  const nextBtn = document.querySelector(".next-btn");
-  const slider = document.querySelector(".photo-slider");
+.photo-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+}
 
-  let currentIndex = 0;
-  let autoPlay;
+.slider-viewport {
+  width: 100%;
+  overflow: hidden;
+}
 
-  function getCardsPerView() {
-    if (window.innerWidth <= 700) {
-      return 1;
-    }
+.slider-track {
+  display: flex;
+  gap: 18px;
+  transition: transform 0.6s ease;
+}
 
-    if (window.innerWidth <= 1000) {
-      return 2;
-    }
+.highlight-card {
+  flex: 0 0 calc((100% - 36px) / 3);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
 
-    return 3;
+.highlight-card img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.highlight-caption {
+  padding: 14px 16px;
+}
+
+.highlight-caption h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.highlight-caption p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.slider-btn {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: white;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.slider-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 1000px) {
+  .highlight-card {
+    flex: 0 0 calc((100% - 18px) / 2);
   }
 
-  function updateSlider() {
-    if (!cards.length) return;
+  .highlight-card img {
+    height: 145px;
+  }
+}
 
-    const cardWidth = cards[0].offsetWidth;
-    const gap = 20;
-
-    track.style.transform =
-      `translateX(-${currentIndex * (cardWidth + gap)}px)`;
+@media (max-width: 700px) {
+  .highlight-card {
+    flex: 0 0 100%;
   }
 
-  function nextSlide() {
-    const cardsPerView = getCardsPerView();
-    const maxIndex = Math.max(0, cards.length - cardsPerView);
-
-    if (currentIndex >= maxIndex) {
-      currentIndex = 0;
-    } else {
-      currentIndex++;
-    }
-
-    updateSlider();
+  .highlight-card img {
+    height: 180px;
   }
 
-  function prevSlide() {
-    const cardsPerView = getCardsPerView();
-    const maxIndex = Math.max(0, cards.length - cardsPerView);
-
-    if (currentIndex <= 0) {
-      currentIndex = maxIndex;
-    } else {
-      currentIndex--;
-    }
-
-    updateSlider();
+  .slider-btn {
+    display: none;
   }
-
-  function startAutoPlay() {
-    autoPlay = setInterval(nextSlide, 4500);
-  }
-
-  function stopAutoPlay() {
-    clearInterval(autoPlay);
-  }
-
-  nextBtn.addEventListener("click", () => {
-    nextSlide();
-    stopAutoPlay();
-    startAutoPlay();
-  });
-
-  prevBtn.addEventListener("click", () => {
-    prevSlide();
-    stopAutoPlay();
-    startAutoPlay();
-  });
-
-  slider.addEventListener("mouseenter", stopAutoPlay);
-  slider.addEventListener("mouseleave", startAutoPlay);
-
-  window.addEventListener("resize", () => {
-    currentIndex = 0;
-    updateSlider();
-  });
-
-  startAutoPlay();
-</script>
-
-</body>
-</html>
+}
